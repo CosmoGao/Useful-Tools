@@ -8,14 +8,15 @@ __author__ = 'Gao Yuhao'
 import json
 import requests
 
-id = {'id': raw_input(u'请输入身份证号:'.encode('gbk'))}
+print(u'请输入身份证号:')
+id = {'id': raw_input()}
 
 url = 'http://apis.baidu.com/apistore/idservice/id'
 
 headers = {
     'accept': "application/json",
     'content-type': "application/json",
-    'apikey': "API"  # 百度API
+    'apikey': "2618b6917b8f2cad138bf718caaae30b"  # 百度API
 }
 
 response = requests.request('get', url, headers=headers, params=id)
@@ -31,6 +32,7 @@ if result['retMsg'] == 'success':
 else:
     print(result['retMsg'])
 try:
-    input(u'按回车键退出'.encode('gbk'))
+    print(u'按回车键退出')
+    input()
 except:
     pass

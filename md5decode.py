@@ -8,14 +8,15 @@ __author__ = 'Gao Yuhao'
 import json
 import requests
 
-md5 = {'md5': raw_input('请输入要解密的MD5:'.encode('gbk'))}
+print(u'请输入要解密的MD5:')
+md5 = {'md5': raw_input()}
 
 url = 'http://apis.baidu.com/chazhao/md5decod/md5decod'
 
 headers = {
     'accept': "application/json",
     'content-type': "application/json",
-    'apikey': "API"  # 百度API
+    'apikey': "2618b6917b8f2cad138bf718caaae30b"  # 百度API
 }
 
 response = requests.request('get', url, headers=headers, params=md5)
@@ -28,6 +29,8 @@ else:
     print(result['msg'])
 
 try:
-    input(u'按回车键退出'.encode('gbk'))
+    print(u'按回车键退出')
+    input()
 except:
     pass
+
