@@ -17,7 +17,7 @@ querystring = {"phone": "your_value", "price": "your_value", "orderid": "your_va
 headers = {
     'accept': "application/json",
     'content-type': "application/json",
-    'apix-key': "2332f0c0cf1c459a490098d876ee1e88"
+    'apix-key': "APIX"  # apix.cn
 }
 
 def md5(str):

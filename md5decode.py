@@ -15,7 +15,7 @@ url = 'http://apis.baidu.com/chazhao/md5decod/md5decod'
 headers = {
     'accept': "application/json",
     'content-type': "application/json",
-    'apikey': "2618b6917b8f2cad138bf718caaae30b"  # 百度API
+    'apikey': "API"  # 百度API
 }
 
 response = requests.request('get', url, headers=headers, params=md5)

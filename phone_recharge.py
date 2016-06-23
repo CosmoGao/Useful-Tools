@@ -34,7 +34,7 @@ querystring['sign'] = md5(phone_num + price_value + querystring['orderid'])
 headers = {
     'accept': "application/json",
     'content-type': "application/json",
-    'apix-key': "2332f0c0cf1c459a490098d876ee1e88"
+    'apix-key': "APIX"  # apix.cn
 }
 
 response = requests.request("GET", url, headers=headers, params=querystring)
