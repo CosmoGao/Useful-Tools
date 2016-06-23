@@ -13,5 +13,5 @@
     - phone_recharge.py
     - multi_phone_recharge.py
     - list.xls
-- 短链接服务(正开发)
+- 短链接服务
     - shorturl.py

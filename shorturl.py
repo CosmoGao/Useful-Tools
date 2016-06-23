@@ -8,24 +8,38 @@ __author__ = 'Gao Yuhao'
 import json
 import requests
 
-url = 'http://apis.baidu.com/chazhao/shorturl/shorturl'
+url_long = raw_input(u'请输入要转换的长连接:')
 
-headers = {
-    'accept': "application/json;charset=utf-8",
-    'content-type': "application/json;charset=utf-8",
-    'apikey': "2618b6917b8f2cad138bf718caaae30b"    #百度API
+if url_long[:6] == 'http://' or url_long[:7] == 'https://':
+    url_long = url_long
+else:
+    url_long = 'http://' + url_long
+
+link = {
+    'source': '5786724301'
+    , 'url_long': url_long
 }
 
-link = {'type':1,'url':['http://www.163.com','http://www.163.com']}
+url = 'http://api.weibo.com/2/short_url/shorten.json'
 
+headers = {
+    'accept': "application/json",
+    'content-type': "application/json",
+}
 
-response = requests.post( url, headers=headers, data=link)
+response = requests.request('get', url, headers=headers, params=link)
 
 result = json.loads(response.text)
-print result
-
 
 try:
-    input(u'按回车键退出')
+    print(u'短链接地址为:' + result[u'urls'][0][u'url_short'])
+except:
+    print(u'生成短链接失败，请检查输入或网络连接。')
+
+try:
+    if raw_input(u'按回车键退出') == '?':
+        print(result)
+    else:
+        pass
 except:
     pass
