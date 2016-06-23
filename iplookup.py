@@ -8,7 +8,7 @@ __author__ = 'Gao Yuhao'
 import json
 import requests
 
-ip = {'ip': raw_input('请输入IP地址:')}
+ip = {'ip': raw_input('请输入IP地址:'.encode('gbk'))}
 
 url = 'http://apis.baidu.com/apistore/iplookupservice/iplookup'
 
@@ -32,6 +32,6 @@ if result['errMsg'] == 'success':
 else:
     print(result['errMsg'])
 try:
-    input(u'按回车键退出')
+    input(u'按回车键退出'.encode('gbk'))
 except:
     pass
