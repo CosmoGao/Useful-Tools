@@ -45,7 +45,7 @@ for id in range(list.nrows)[1:]:
     price = str(int(list.cell(id, 1).value))
     querystring['phone'] = phone
     querystring['price'] = price
-    querystring['orderid'] = time.strftime('%Y%M%d%H%M%S', time.localtime()) + '%06.0f' % id
+    querystring['orderid'] = time.strftime('%Y%m%d%H%M%S', time.localtime()) + '%06.0f' % id
     querystring['sign'] = md5(phone + price + querystring['orderid'])
     response = requests.request("GET", url, headers=headers, params=querystring)
     result = json.loads(response.text)

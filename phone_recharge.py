@@ -28,19 +28,19 @@ def md5(str):
 
 querystring['phone'] = '%s' % phone_num
 querystring['price'] = '%s' % price_value
-querystring['orderid'] = time.strftime('%Y%M%d%H%M%S', time.localtime())
+querystring['orderid'] = time.strftime('%Y%m%d%H%M%S', time.localtime()) + '000000'
 querystring['sign'] = md5(phone_num + price_value + querystring['orderid'])
 
 headers = {
     'accept': "application/json",
     'content-type': "application/json",
-    'apix-key': "APIX"  # apix.cn
+    'apix-key': "2332f0c0cf1c459a490098d876ee1e88"
 }
 
 response = requests.request("GET", url, headers=headers, params=querystring)
 
 print(json.loads(response.text)['Msg'])
-
+print(json.loads(response.text))
 try:
     input()
 except:
