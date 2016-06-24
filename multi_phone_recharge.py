@@ -17,8 +17,9 @@ querystring = {"phone": "your_value", "price": "your_value", "orderid": "your_va
 headers = {
     'accept': "application/json",
     'content-type': "application/json",
-    'apix-key': "APIX"  # apix.cn
+    'apix-key': ""
 }
+
 
 def md5(str):
     import hashlib
@@ -36,6 +37,8 @@ relist.write(0, 1, 'price')
 relist.write(0, 2, 'orderid')
 relist.write(0, 3, 'sign')
 relist.write(0, 4, 'Msg')
+relist.write(0, 5, 'Cardname')
+headers['apix-key'] = list.cell(0, 3).value
 
 for id in range(list.nrows)[1:]:
     phone = str(int(list.cell(id, 0).value))
@@ -46,11 +49,17 @@ for id in range(list.nrows)[1:]:
     querystring['sign'] = md5(phone + price + querystring['orderid'])
     response = requests.request("GET", url, headers=headers, params=querystring)
     result = json.loads(response.text)
+    #print result   #debug
     relist.write(id, 0, phone)
     relist.write(id, 1, price)
     relist.write(id, 2, querystring['orderid'])
     relist.write(id, 3, querystring['sign'])
-    relist.write(id, 4, result['Msg'])
+
+    try:
+        relist.write(id, 4, result['Msg'])
+        relist.write(id, 5, result['Data']['Cardname'])
+    except:
+        relist.write(id, 4, result['error'])
 
 re.save('./result.xls')
 print(u'Job done! 充值结果见result文件，按回车键退出。')
