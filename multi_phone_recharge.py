@@ -66,7 +66,10 @@ for id in range(list.nrows)[1:]:
 
 re.save('./result.xls')
 print(u'Job done! 充值结果见result文件，按回车键退出。')
+
 try:
-    input()
+    if raw_input() == "?":
+        print result
+        input()
 except:
     pass
