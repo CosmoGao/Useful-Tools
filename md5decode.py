@@ -24,7 +24,8 @@ response = requests.request('get', url, headers=headers, params=md5)
 result = json.loads(response.text)
 
 if result['msg'] == 'succeed':
-    print(u'该MD5(%s)的解密结果为:%s' % (result['data']['md5'], result['data']['md5_src']))
+    print(u'该MD5(%s)的解密结果为:%s' %
+          (result['data']['md5'], result['data']['md5_src']))
 else:
     print(result['msg'])
 
@@ -33,4 +34,3 @@ try:
     input()
 except:
     pass
-

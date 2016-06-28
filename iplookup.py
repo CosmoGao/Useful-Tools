@@ -29,7 +29,8 @@ try:
         city = result['retData']['city']
         district = result['retData']['district']
         carrier = result['retData']['carrier']
-        print(u'所查询IP地址位于 %s,%s,%s,%s; 由%s提供服务.' % (country, province, city, district, carrier))
+        print(u'所查询IP地址位于 %s,%s,%s,%s; 由%s提供服务.' %
+              (country, province, city, district, carrier))
     else:
         print(result['errMsg'])
 except:
